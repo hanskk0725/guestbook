@@ -66,9 +66,10 @@ Full-stack guestbook application with Spring Boot 4.0 backend and Next.js 16 fro
 ## AWS EC2 프리티어 배포 가이드 (Ubuntu)
 
 ### 현재 배포 정보
+- **도메인**: guestboard.kro.kr
 - **EC2 IP**: 15.165.67.246
-- **Frontend**: http://15.165.67.246:3000
-- **Backend API**: http://15.165.67.246:8080/api/guestbook
+- **Frontend**: http://guestboard.kro.kr
+- **Backend API**: http://guestboard.kro.kr:8080/api/guestbook
 
 ---
 
@@ -243,8 +244,18 @@ df -h
 
 ---
 
-### 9. 도메인 연결 (선택사항)
+### 9. 도메인 연결
 
-1. Route 53 또는 외부 DNS에서 A 레코드 추가
-2. EC2 퍼블릭 IP를 도메인에 연결
-3. HTTPS 필요 시 Let's Encrypt + Nginx 리버스 프록시 구성
+현재 **guestboard.kro.kr** 도메인이 연결되어 있습니다.
+
+#### 도메인 설정 방법 (내도메인.한국 등)
+1. DNS 설정에서 **A 레코드** 추가
+2. IP 주소에 EC2 퍼블릭 IP 입력 (15.165.67.246)
+3. 저장 후 DNS 반영 대기 (몇 분 ~ 최대 24시간)
+
+#### 수정 필요 파일 (도메인 변경 시)
+1. `docker-compose.yml` - `NEXT_PUBLIC_API_URL`
+2. `backend/.../SecurityConfig.java` - CORS allowedOrigins
+
+#### HTTPS 설정 (선택사항)
+Let's Encrypt + Nginx 리버스 프록시로 SSL 인증서 적용 가능
