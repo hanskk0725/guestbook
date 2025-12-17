@@ -1,0 +1,46 @@
+[00:00:01.260] Server  LOG      ✓ Ready in 1121ms
+[00:00:47.321] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+                <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                        <SegmentViewNode type="page" pagePath="page.js">
+                          <SegmentTrieNode>
+                          <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>
+                            <Home params={Promise} searchParams={Promise}>
+                              <div
++                               className="min-h-screen bg-gray-100 py-8"
+-                               className={null}
+-                               id="open-incognito-widget"
+-                               role="button"
+-                               tabindex="0"
+-                               aria-label="현재 탭을 시크릿 모드에서 열기"
+                              >
++                               <div className="max-w-2xl mx-auto px-4">
+                        ...
+                      ...
+          ...
+
+[00:00:47.321] Browser ERROR   Failed to fetch guestbooks: {}
+[00:00:47.321] Browser ERROR   Failed to fetch guestbooks: {}
+[00:03:22.352] Browser ERROR   Failed to fetch guestbooks: {}
+[00:03:23.860] Browser ERROR   Failed to fetch guestbooks: {}
+[00:03:41.113] Browser ERROR   Failed to create guestbook: {}
