@@ -39,7 +39,7 @@ services:
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_URL: http://54.180.101.5:8080
+      NEXT_PUBLIC_API_URL: http://15.165.67.246:8080
 
 volumes:
   mysql_data:
