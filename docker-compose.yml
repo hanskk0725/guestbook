@@ -35,10 +35,10 @@ services:
     build:
       context: ./frontend
       args:
-        NEXT_PUBLIC_API_URL: http://15.165.67.246:8080
+        NEXT_PUBLIC_API_URL: http://guestboard.kro.kr:8080
     container_name: guestbook-frontend
     ports:
-      - "3000:3000"
+      - "80:3000"
     depends_on:
       - backend
 
